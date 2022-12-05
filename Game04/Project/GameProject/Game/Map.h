@@ -16,6 +16,8 @@ public:
 	int GetTip(const CVector2D& pos);
 	//指定列、指定行のマップチップを取得
 	int GetTip(int col, int raw);
+	//行と列の取得
+	void GetColRow(const CVector2D& pos,int* col, int* raw);
 	//マップとの当たり判定
 	int CollisionMap(const CVector2D& pos);
 	int CollisionMap(const CVector2D& pos, const CRect& rect);

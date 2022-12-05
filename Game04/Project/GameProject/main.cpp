@@ -65,16 +65,16 @@ void Init(void)
 
 	//画像読み込み
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png"));
-	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png"));
+	//ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png"));
 	ADD_RESOURCE("Bullet", CImage::CreateImage("Image/Bullet.png"));
 	ADD_RESOURCE("Bullet2", CImage::CreateImage("Image/Bullet2.png"));
 	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
 	//プレイヤーの生成
-	Base::Add(new Player(CVector2D(32 * 3, 32 * 4)));
+	Base::Add(new Player(CVector2D(32 * 0, 32 * 0)));
 	//敵の生成
-	Base::Add(new Enemy(CVector2D(32 * 3, 32 * 8)));
-	Base::Add(new Enemy(CVector2D(32 * 17, 32 * 14)));
-	Base::Add(new Enemy(CVector2D(32 * 37, 32 * 10)));
+	//Base::Add(new Enemy(CVector2D(32 * 3, 32 * 8)));
+	//Base::Add(new Enemy(CVector2D(32 * 17, 32 * 14)));
+	//Base::Add(new Enemy(CVector2D(32 * 37, 32 * 10)));
 	//マップの生成
 	Base::Add(new Map());
 
