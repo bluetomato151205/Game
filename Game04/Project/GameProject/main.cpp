@@ -8,6 +8,7 @@
 #include"Game/Enemy.h"
 #include"Game/Bullet.h"
 #include"Game/Map.h"
+int num = 1;
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -24,6 +25,24 @@ void MainLoop(void) {
 	Base::UpdateAll();
 	Base::CollisionAll();
 	Base::DrawAll();
+
+	//マップ取得
+	Map* m = dynamic_cast<Map*>(Base::FindObject(eType_Field));
+	//マップが無ければ動かない
+	if (m) {
+		if (PUSH(CInput::eMouseL)) {
+			CVector2D pos = CInput::GetMousePoint();
+			if(pos.x<=12*MAP_TIP_SIZE)
+			m->SetTip(pos, num);
+			else
+			{
+				num = m->GetTip(pos);
+			}
+		}
+		
+	}
+
+
 
 
 }

@@ -10,9 +10,9 @@
 //6:下左(左下)カーブ
 
 static int stage1data[MAP_HEIGHT][MAP_WIDTH] = {
-	{ 2,4,3,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{ 0,4,3,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{ 2,2,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1,0},
-	{ 2,1,3,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+	{ 2,1,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{ 1,3,3,5,0,0,0,0,0,0,0,0,0,0,0,0,2,0},
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0},
@@ -72,6 +72,21 @@ int Map::GetTip(const CVector2D& pos)
 	if (raw > MAP_HEIGHT - 1)raw = MAP_HEIGHT - 1;
 	//チップデータを返却
 	return GetTip(col, raw);
+}
+void Map::SetTip(const CVector2D& pos, int t)
+{
+	//列を計算
+	int col = pos.x / MAP_TIP_SIZE;
+	//列の制限(0～MAP_WIDTH-1)
+	if (col < 0)col = 0;
+	if (col > MAP_WIDTH - 1)col = MAP_WIDTH - 1;
+	//行を計算
+	int raw = pos.y / MAP_TIP_SIZE;
+	//行の制限(0～MAP_HEIGHT-1)
+	if (raw < 0)raw = 0;
+	if (raw > MAP_HEIGHT - 1)raw = MAP_HEIGHT - 1;
+
+	stage1data[raw][col] = t;
 }
 int Map::GetTip(int col, int raw)
 {

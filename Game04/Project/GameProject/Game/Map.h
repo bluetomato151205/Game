@@ -14,6 +14,8 @@ public:
 	void Draw();
 	//指定座標のチップ番号を取得
 	int GetTip(const CVector2D& pos);
+	//指定座標のチップ番号を取得
+	void SetTip(const CVector2D& pos,int t);
 	//指定列、指定行のマップチップを取得
 	int GetTip(int col, int raw);
 	//行と列の取得
