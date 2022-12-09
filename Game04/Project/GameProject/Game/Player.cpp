@@ -165,6 +165,14 @@ void Player::Update()
 		m_entry_dir = eUp;
 		m_old_row = m_row;
 	}
+	 if (m_pos.x > 1250)
+		 m_pos.x = 1260;
+	 if (m_pos.x < 20)
+		 m_pos.x = 20;
+	 if (m_pos.y > 700)
+		 m_pos.y = 700;
+	 if (m_pos.y < 20)
+		 m_pos.y = 20;
 	
 
 
