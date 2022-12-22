@@ -31,6 +31,7 @@ void Player::Update()
 
 	//移動速度
 	const float speed = 1;
+
 	
 	//乗っているチップの種類
 	int t = m->GetTip(m_pos);
@@ -40,6 +41,7 @@ void Player::Update()
 		//0:空白
 		//1:上右(右上)カーブ
 	case 1:
+
 		if (m_entry_dir == eUp) {
 			//上から来たなら、右下へ移動
 			m_pos.y += speed;
@@ -93,7 +95,7 @@ void Player::Update()
 			if (m_entry_dir == eDown) {
 				//下から来たなら、右上へ移動
 				m_pos.y -= speed;
-				m_pos.x -= speed;
+				m_pos.x += speed;
 			}
 			else {
 				//それ以外なら繋がらない
@@ -166,9 +168,9 @@ void Player::Update()
 		m_old_row = m_row;
 	}
 	 if (m_pos.x > 1250)
-		 m_pos.x = 1260;
-	 if (m_pos.x < 20)
-		 m_pos.x = 20;
+		 m_pos.x = 1250;
+	 if (m_pos.x < 15)
+		 m_pos.x = 15;
 	 if (m_pos.y > 700)
 		 m_pos.y = 700;
 	 if (m_pos.y < 20)

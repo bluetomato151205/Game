@@ -9,6 +9,7 @@
 class Map :public Base {
 private:
 	CImage m_img;
+	int m_stagedata[MAP_HEIGHT][MAP_WIDTH];
 public:
 	Map();
 	void Draw();

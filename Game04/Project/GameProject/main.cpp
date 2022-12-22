@@ -9,6 +9,8 @@
 #include"Game/Bullet.h"
 #include"Game/Map.h"
 int num = 1;
+int num2[7] = { 0,4,2,3,2,2,5 };
+int inum2[7] = { 0,4,2,3,2,2,5 };
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -32,17 +34,31 @@ void MainLoop(void) {
 	if (m) {
 		if (PUSH(CInput::eMouseL)) {
 			CVector2D pos = CInput::GetMousePoint();
-			if(pos.x<=12*MAP_TIP_SIZE)
-			m->SetTip(pos, num);
+			if (pos.x <= 12 * MAP_TIP_SIZE) {
+				int t = m->GetTip(pos);
+				if(num2[num]!=0){
+				m->SetTip(pos, num);
+					num2[num] -= 1;
+					
+				}
+			}
 			else
 			{
 				num = m->GetTip(pos);
 			}
 		}
-		
 	}
+	FONT_T()->Draw(600, 64, 1, 0, 0, "%d %d %d %d %d %d ", num2[1], num2[2],
+		num2[3], num2[4], num2[5], num2[6]);
+	if (PUSH(CInput::eButton2)) {
+		Base::KillAll();
+		Base::Add(new Player(CVector2D(32 * 0, 32 * 0)));
+		Base::Add(new Map());
+		memcpy(num2, inum2, sizeof(inum2));
+}
+	if (PUSH(CInput::eButton1)) {
 
-
+	}
 
 
 }
@@ -54,14 +70,14 @@ void Init(void)
 	CFPS::Init();
 	//ボタンの設定
 	CInput::Init();
-	CInput::SetButton(0, CInput::eButton1, 'Z');
+	CInput::SetButton(0, CInput::eButton1, 'S');
 	CInput::SetButton(0, CInput::eButton2, 'X');
 	CInput::SetButton(0, CInput::eButton3, 'C');
 	CInput::SetButton(0, CInput::eButton4, 'V');
 	CInput::SetButton(0, CInput::eButton5, VK_SPACE);
 	CInput::SetButton(0, CInput::eButton10, VK_RETURN);
 	CInput::SetButton(0, CInput::eUp, 'W');
-	CInput::SetButton(0, CInput::eDown, 'S');
+	CInput::SetButton(0, CInput::eDown, 'Z');
 	CInput::SetButton(0, CInput::eLeft, 'A');
 	CInput::SetButton(0, CInput::eRight, 'D');
 	CInput::SetButton(0, CInput::eMouseL, VK_LBUTTON);
