@@ -104,8 +104,10 @@ void Init(void)
 	ADD_RESOURCE("Bullet", CImage::CreateImage("Image/Bullet.png"));
 	ADD_RESOURCE("Bullet2", CImage::CreateImage("Image/Bullet2.png"));
 	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
+ 	ADD_RESOURCE("GOAL", CImage::CreateImage("Image/ゴール.png"));
 	//プレイヤーの生成
 	Base::Add(new Player(CVector2D(32 * 0, 32 * 0)));
+	
 	//敵の生成
 	//Base::Add(new Enemy(CVector2D(32 * 3, 32 * 8)));
 	//Base::Add(new Enemy(CVector2D(32 * 17, 32 * 14)));

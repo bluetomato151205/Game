@@ -5,15 +5,16 @@ Player::Player(const CVector2D& pos)
 	:Base(eType_Player)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
+	m_img2 = COPY_RESOURCE("GOAL", CImage);
 	//中心を設定
 	m_img.SetCenter(16, 16);
+
 	//矩形を設定
 	m_rect = CRect(-16, -16, 16, 16);
-	
+
 	//プレイヤーの位置がチップの中心になるように調整
 	m_pos = pos + m_img.m_center;
-
-
+	
 	//マップの取得
 	if (Map* m = dynamic_cast<Map*>(Base::FindObject(eType_Field))) {
 		m->GetColRow(m_pos, &m_col, &m_row);
@@ -30,7 +31,7 @@ void Player::Update()
 	if (!m) return;
 
 	//移動速度
-	const float speed = 1;
+	const float speed = 0.5;
 
 	
 	//乗っているチップの種類
@@ -135,6 +136,11 @@ void Player::Update()
 				//それ以外なら繋がらない
 			}
 		break;
+		//7:ゴール
+	case 7:
+		m_img2.SetSize(600, 600);
+		m_img2.Draw();
+		break;
 	}
 
 
@@ -189,4 +195,5 @@ void Player::Draw() {
 	m_img.SetPos(m_pos);
 	m_img.SetAng(m_ang);
 	m_img.Draw();
+	
 }

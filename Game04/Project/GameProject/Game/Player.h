@@ -3,6 +3,7 @@
 
 class Player :public Base {
 	CImage m_img;
+	CImage m_img2;
 	enum {
 		eLeft,	//¶‚©‚çi“ü
 		eRight,	//‰E‚©‚çi“ü
